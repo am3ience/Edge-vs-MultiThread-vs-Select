@@ -98,6 +98,7 @@ if __name__ == '__main__':
             print (str(clientaddr) + " : " + " Just Connected. \n Currently connected clients: " + str(counter) + "\n")
             text_file.write(str(getTime()) + " - " + str(clientaddr) + " : " + " Just Connected. \n Currently connected clients: " + str(counter) + "\n")
             clientThread = threading.Thread(target=ThreadFunction, args=(clientsocket, clientaddr))
+            clientThread.daemon = True
             clientThread.start()
 
     except KeyboardInterrupt:

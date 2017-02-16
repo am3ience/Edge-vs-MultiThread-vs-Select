@@ -68,7 +68,7 @@ def run(clientNumber):
 
         # Log information of Client
         text_file.write(
-            "\nClient " + str(clientNumber) + " RTT time taken for " + str(msgMultiple) + " messages was: " + str(
+            "\nClient " + str(clientNumber) + " RTT for " + str(msgMultiple) + " messages was: " + str(
                 threadRTT) + " seconds.")
         threadRTT = 0
         break
@@ -102,13 +102,13 @@ if __name__ == '__main__':
     totalBytes = totalRequests * bytes
     averageRTT = totalTime / totalRequests
     # Output data
-    print("Bytes sent in message was : " + str(bytes))
+    print("Bytes sent in each message was : " + str(bytes))
     print("Total Data sent was : " + str(totalBytes) + " Bytes.")
     print("Average RTT was : " + str(averageRTT) + " seconds.")
-    print("Requests was : " + str(totalRequests))
+    print("Total number of requests was : " + str(totalRequests))
 
     # Write data to log file
     text_file.write("\n\n Bytes sent in message was : " + str(bytes))
     text_file.write("\nTotal Data sent was : " + str(totalBytes) + " Bytes.")
     text_file.write("\nAverage RTT was : " + str(averageRTT) + " seconds.")
-    text_file.write("\nRequests was : " + str(totalRequests))
+    text_file.write("\nTotal number of requests was : " + str(totalRequests))

@@ -41,7 +41,7 @@ def ThreadFunction(clientsocket, clientaddr):
         ReceivedData += ReceiveDataSize
 
         #LOg the received data
-        text_file.write(str(getTime()) + "__ Size of data received (" + clientIP + ":" + str(clientSocket) + ") = " + str(ReceiveDataSize) + '\n')
+        text_file.write(str(getTime()) + "__ Received Data (" + clientIP + ":" + str(clientSocket) + ") = " + str(ReceiveDataSize) + '\n')
 
         #Send data
         clientsocket.send(data)
@@ -49,7 +49,7 @@ def ThreadFunction(clientsocket, clientaddr):
         SentData += SentDataSize
 
         #Log the sent data
-        text_file.write(str(getTime()) + "__ Size of data sent (" + clientIP + ":" + str(clientSocket) + ") = " + str(SentDataSize) + '\n')
+        text_file.write(str(getTime()) + "__ Sent Data (" + clientIP + ":" + str(clientSocket) + ") = " + str(SentDataSize) + '\n')
 
 
 def Close(counter, ReceivedData, SentData):
@@ -65,7 +65,7 @@ def Close(counter, ReceivedData, SentData):
 if __name__ == '__main__':
 
     serverIP = raw_input('Enter your server IP \n')
-    port = int(raw_input('What port would you like to use?\n'))
+    port = int(raw_input('Enter the port you want to use \n'))
 
     # Maintain how many connections
     connections = []
@@ -86,7 +86,7 @@ if __name__ == '__main__':
 
     # The listen backlog queue size
     serversocket.listen(50)
-    print ("Server is listening for connections\n")
+    print ("Server is listening...\n")
 
     try:
         while 1:
@@ -95,8 +95,8 @@ if __name__ == '__main__':
             counter += 1
 
             # Log client information
-            print (str(clientaddr) + " : " + " Just Connected. \n Currently connected clients: " + str(counter) + "\n")
-            text_file.write(str(getTime()) + " - " + str(clientaddr) + " : " + " Just Connected. \n Currently connected clients: " + str(counter) + "\n")
+            print (str(clientaddr) + " : " + " Connected. \n Currently connected clients: " + str(counter) + "\n")
+            text_file.write(str(getTime()) + " - " + str(clientaddr) + " : " + " Connected. \n Currently connected clients: " + str(counter) + "\n")
             clientThread = threading.Thread(target=ThreadFunction, args=(clientsocket, clientaddr))
             clientThread.daemon = True
             clientThread.start()
